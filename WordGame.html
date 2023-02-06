@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<title>Word Game</title>
+
+<head>
+    <script>
+        function letter(l) {
+            document.getElementById("word").value += document.getElementById(l).value;
+            document.getElementById(l).value = "";
+        }
+        
+        function toWord() {
+            document.getElementById("p").innerHTML += document.getElementById("word").value + "<br>";
+            document.getElementById("word").value = "";
+            document.getElementById("i1").value = "I";
+            document.getElementById("n").value = "N";
+            document.getElementById("d").value = "D";
+            document.getElementById("u").value = "U";
+            document.getElementById("b1").value = "B";
+            document.getElementById("i2").value = "I";
+            document.getElementById("t").value = "T";
+            document.getElementById("a").value = "A";
+            document.getElementById("b2").value = "B";
+            document.getElementById("l").value = "L";
+            document.getElementById("y").value = "Y";
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td><input type="button" name="i1" id="i1" onclick="letter('i1')" value="I" /></td>
+            <td><input type="button" name="n" id="n" onclick="letter('n')" value="N" /></td>
+            <td><input type="button" name="d" id="d" onclick="letter('d')" value="D" /></td>
+            <td><input type="button" name="u" id="u" onclick="letter('u')" value="U" /></td>
+            <td><input type="button" name="b1" id="b1" onclick="letter('b1')" value="B" /></td>
+            <td><input type="button" name="i2" id="i2" onclick="letter('i2')" value="I" /></td>
+            <td><input type="button" name="t" id="t" onclick="letter('t')" value="T" /></td>
+            <td><input type="button" name="a" id="a" onclick="letter('a')" value="A" /></td>
+            <td><input type="button" name="b2" id="b2" onclick="letter('b2')" value="B" /></td>
+            <td><input type="button" name="l" id="l" onclick="letter('l')" value="L" /></td>
+            <td><input type="button" name="y" id="y" onclick="letter('y')" value="Y" /></td>
+        </tr>
+        <tr>
+            <td colspan="11"><input type="text" name="word" id="word" /></td>
+            <td><input type="button" name="enter" id="enter" onclick="toWord()" value="Enter" /></td>
+        </tr>
+    </table>
+    
+    <p name="p" id="p">
+        
+    </p>
+</body>
+
+</html>

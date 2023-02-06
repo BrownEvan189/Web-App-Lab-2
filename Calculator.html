@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<title>Calculator</title>
+
+<head>
+    <script>
+        function calculate() {
+            var operation = document.getElementById("answer").value;
+            var num1 = "";
+            var num2 = "";
+            var op = '';
+            
+            for(i = 0; i < operation.length; i++) {
+                if(op == '' && operation.charAt(i) != '+' && operation.charAt(i) != '-' && operation.charAt(i) != '*' && operation.charAt(i) != '/') {
+                    num1 += operation.charAt(i);
+                } else if(op == '') {
+                    op = operation.charAt(i);
+                } else {
+                    num2 += operation.charAt(i);
+                }
+            }
+            
+            if(op == '+') {
+                document.getElementById("answer").value = parseInt(num1) + parseInt(num2);
+            } else if(op == '-') {
+                document.getElementById("answer").value = parseInt(num1) - parseInt(num2);
+            } else if(op == '*') {
+                document.getElementById("answer").value = parseInt(num1) * parseInt(num2);
+            } else if(op == '/') {
+                document.getElementById("answer").value = parseInt(num1) / parseInt(num2);
+            }
+            return 0;
+        }
+
+        function number(i) {
+            document.getElementById("answer").value += i;
+            return 0;
+        }
+
+        function operator(i) {
+            var c = document.getElementById("answer").value.charAt(document.getElementById("answer").value.length - 1);
+            
+            if(i == 'C') {
+                document.getElementById("answer").value = "";
+            } else if(c == '+' || c == '-' || c == '*' || c == '/') {
+                document.getElementById("answer").value = document.getElementById("answer").value.substring(0, document.getElementById("answer").value.length - 1) + i;
+            } else {
+                document.getElementById("answer").value += i;
+            }
+            return 0;
+        }
+    </script>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <td colspan="4"><input type="text" style="width: 180px" name="answer" id="answer" disabled="true" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <td colspan="2"><input type="button" style="width: 80px" name="C" id="C" value="C" onclick="operator('C')" /></td>
+        </tr>
+        <tr>
+            <td><input type="button" style="width: 50px" style="width: 50px" name="1" id="1" value="1" onclick="number(1)" /></td>
+            <td><input type="button" style="width: 50px" name="2" id="2" value="2" onclick="number(2)" /></td>
+            <td><input type="button" style="width: 50px" name="3" id="3" value="3" onclick="number(3)" /></td>
+            <td><input type="button" style="width: 20px" name="+" id="+" value="+" onclick="operator('+')" /></td>
+        </tr>
+        <tr>
+            <td><input type="button" style="width: 50px" name="4" id="4" value="4" onclick="number(4)" /></td>
+            <td><input type="button" style="width: 50px" name="5" id="5" value="5" onclick="number(5)" /></td>
+            <td><input type="button" style="width: 50px" name="6" id="6" value="6" onclick="number(6)" /></td>
+            <td><input type="button" style="width: 20px" name="-" id="-" value="-" onclick="operator('-')" /></td>
+        </tr>
+        <tr>
+            <td><input type="button" style="width: 50px" name="7" id="7" value="7" onclick="number(7)" /></td>
+            <td><input type="button" style="width: 50px" name="8" id="8" value="8" onclick="number(8)" /></td>
+            <td><input type="button" style="width: 50px" name="9" id="9" value="9" onclick="number(9)" /></td>
+            <td><input type="button" style="width: 20px" name="*" id="*" value="*" onclick="operator('*')" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" style="width: 50px" name="0" id="0" value="0" onclick="number(0)" /></td>
+            <td></td>
+            <td><input type="button" style="width: 20px" name="/" id="/" value="/" onclick="operator('/')" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td colspan="2"><input type="button" style="width: 80px" name="=" id="=" value="=" onclick="calculate()" /></td>
+        </tr>
+    </table>
+</body>
+
+</html>
